@@ -25,6 +25,12 @@ class VicesController < ApplicationController
     @vice = Vice.find(params[:id])
   end
 
+  def update
+    v = Vice.find(params[:id])
+    v.update(vice_params)
+    redirect_to vices_path
+  end
+
   def show
     @vice = Vice.find(params[:id])
   end
