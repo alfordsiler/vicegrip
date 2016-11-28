@@ -1,2 +1,30 @@
 <h1>Vices#new</h1>
 <p>Find me in app/views/vices/new.html.erb</p>
+
+
+
+<h2>Sign Up</h2>
+<%= link_to "<< Home", root_path %>
+<br><br>
+
+<%= form_for @vice do |v| %>
+  <div>
+    <%= v.label :vice_name %>
+    <%= v.text_field :vice_name %>    
+  </div>
+  <div>
+    <%= v.label :vice_cost %>
+    <%= v.text_field :vice_cost %>    
+  </div>
+  <div>
+    <%= v.label :goal_name %>
+    <%= v.text_field :goal_name %>    
+  </div>
+  <div>
+    <%= v.label :goal_cost %>
+    <%= v.text_field :goal_cost %>    
+  </div>
+
+  <%= v.submit %>
+
+<% end %>
