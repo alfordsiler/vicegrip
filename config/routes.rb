@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'vices#index'
+  root 'home#index'
+
+  get 'vices' => 'vices#index'
 
   get 'vices/new' => 'vices#new'
 
