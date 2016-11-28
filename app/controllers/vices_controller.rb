@@ -35,6 +35,11 @@ class VicesController < ApplicationController
     @vice = Vice.find(params[:id])
   end
 
+  def destroy
+    Vice.find(params[:id]).delete
+    redirect_to vices_path
+  end
+
   private
 
   def vice_params 
