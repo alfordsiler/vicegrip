@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vice_name: MyString
+  vice_cost: MyString
+  goal_name: MyString
+  goal_cost: MyString
+  user: one
+
+two:
+  vice_name: MyString
+  vice_cost: MyString
+  goal_name: MyString
+  goal_cost: MyString
+  user: two

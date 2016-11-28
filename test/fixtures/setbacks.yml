@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  setback_date: MyString
+  setback_cost: MyString
+  user: one
+  vice: one
+
+two:
+  setback_date: MyString
+  setback_cost: MyString
+  user: two
+  vice: two
