@@ -1,0 +1,22 @@
+
+<h2>Sign Up</h2>
+<%= link_to "<< Home", root_path %>
+<br><br>
+
+<%= form_for :user do |u| %>
+  <div>
+    <%= u.label :name %>
+    <%= u.text_field :name %>    
+  </div>
+  <div>
+    <%= u.label :email %>
+    <%= u.email_field :email %>
+  </div>
+  <div>
+    <%= u.label :pasword %>
+    <%= u.password_field :password %>
+  </div>
+
+  <%= u.submit %>
+
+<% end %>
