@@ -1,5 +1,4 @@
 class UserController < ApplicationController
-  before_action :is_authenticated, only: [:create]
   before_action :current_user, only: [:index]
   
   def index
@@ -12,7 +11,9 @@ class UserController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
+    user = User.create(user_params) 
+      puts user_params
+
     if user.id
       session[:user_id] = user.id
       flash[:success] = 'User created and logged in'
