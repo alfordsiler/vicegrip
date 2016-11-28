@@ -1,6 +1,6 @@
 class VicesController < ApplicationController
   before_action :is_authenticated, only: [:new, :create]
-  before_action :current_user, only: [:index]
+  before_action :current_user
 
   def index
     @vices = Vice.all
