@@ -1,1 +1,11 @@
-<div class="navbar">This will be a navbar</div>
+<div class="navbar">This will be a navbar
+    <div class="container">
+      <% if @current_user %>
+        <%= form_for :user, :url => logout_path, method: :delete do |form| %>
+          <%= form.submit 'Logout' %>
+        <% end %>
+      <% else %>
+        <a href="/login">Login</a>
+      <% end %>
+    </div>
+  </div>
