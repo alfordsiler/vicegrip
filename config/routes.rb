@@ -10,6 +10,12 @@ Rails.application.routes.draw do
 
   get 'vices/:id' => 'vices#show'
 
+  get 'profile' => 'user#index'
+
+  get 'signup' => 'user#new'
+
+  post 'signup' => 'user#create'
+
   get "login" => "sessions#new"
 
   post "login" => "sessions#create"
@@ -19,4 +25,5 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :vices
+  resources :user
 end
