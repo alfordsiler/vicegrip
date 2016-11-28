@@ -9,7 +9,7 @@
 	
 	<% (0...@vices.length).each do |i| %>
 		<div>
-			<h3><%= @vices[i].vice_name %></h3>
+			<h3><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></h3>
 
 				<div><strong>Vice Cost:</strong> <%= @vices[i].vice_cost %></div>
 				<div><strong>Goal:</strong> <%= @vices[i].goal_name %></div>
