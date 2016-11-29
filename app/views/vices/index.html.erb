@@ -2,6 +2,7 @@
 
 <% if @vices %>
 <% (0...@vices.length).each do |i| %>
+  <% if @current_user.id == @vices[i].user_id %>
 <div>
 	<h2><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></h2>
 
@@ -20,12 +21,14 @@
   	<%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn-sm btn-toolbar navbar-btn' %>
 	<%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn-sm btn-toolbar navbar-btn' %>
 	<%= link_to "Delete", vice_path(@vices[i]), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
+  <% end %>
 <% end %>
 
 <% else %>
 Vices not found.
 <% end %>
 </div>
+
 <div class="clearfix"></div>
 <div class="container center-block text-center">
 <%= link_to "Add New Vice", new_vice_path, class: 'btn' %>

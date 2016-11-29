@@ -17,11 +17,6 @@ class VicesController < ApplicationController
     redirect_to vices_path
   end
 
-  def destroy
-    Vice.find(params[:id]).delete
-    redirect_to vice_path
-  end
-
   def edit
     @vice = Vice.find(params[:id])
   end
@@ -36,10 +31,12 @@ class VicesController < ApplicationController
     @setbacks = Setback.all
     @vice = Vice.find(params[:id])
     @progress = ((@vice.vice_cost.to_f/@vice.goal_cost.to_f) * 100)
+    # @saved = @vice.vice_cost * time passed - setback total
   end
 
   def destroy
-    Vice.find(params[:id]).delete
+    @current_user.vices.delete(Vice.find(params[:id]));
+    # Vice.find(params[:id]).delete
     redirect_to vices_path
   end
 
