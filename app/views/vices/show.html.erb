@@ -1,6 +1,17 @@
-<h3>Your vices:</h3>
+<!-- <h3 class="text-center">Your vices</h3> -->
+<div class="container">
+  <h2>You're Quitting <br> <span class="yellowBackground"> <%= @vice.vice_name %> </span></h2>
+  <hr>
+  <h2>You've Saved <span class="yellowBackground">$<%= @vice.vice_cost  %></span></h2>
+  <hr>
+  <h2>Keep it up, you're 
+  <br>
+  <span class="yellowBackground"><%= time_ago_in_words(@vice.created_at) %></span>
+  <br>
+  From Your Goal To 
+  <br>
+  <span class="yellowBackground"><%= @vice.goal_name  %></span></h2>
+  <hr>
 
-<h1><%= @vice.vice_name %></h1>
-<p><%= @vice.vice_cost  %></p>
-<p><%= @vice.goal_name  %></p>
-<p><%= @vice.goal_cost  %></p>
+  <p><%= @vice.goal_cost  %></p>  
+  </div>

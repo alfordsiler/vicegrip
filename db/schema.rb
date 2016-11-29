@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128185526) do
+ActiveRecord::Schema.define(version: 20161129172824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "setbacks", force: :cascade do |t|
-    t.date  "setback_date"
+    t.date     "setback_date"
     t.integer  "setback_cost"
     t.integer  "user_id"
     t.integer  "vice_id"
@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 20161128185526) do
 
   create_table "vices", force: :cascade do |t|
     t.string   "vice_name"
-    t.integer   "vice_cost"
+    t.integer  "vice_cost"
     t.string   "goal_name"
-    t.integer   "goal_cost"
+    t.integer  "goal_cost"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -2,14 +2,14 @@
 
 one:
   vice_name: MyString
-  vice_cost: MyString
+  vice_cost: 1
   goal_name: MyString
-  goal_cost: MyString
+  goal_cost: 1
   user: one
 
 two:
   vice_name: MyString
-  vice_cost: MyString
+  vice_cost: 1
   goal_name: MyString
-  goal_cost: MyString
+  goal_cost: 1
   user: two
