@@ -15,8 +15,66 @@
  */
 
 .navbar {
-	width: 100%;
-	height: 20px;
-	background-color: #ccc;
-	text-align: center;
+   width: 100%;
+   height: 20px;
+   background-color: rgba(f,f,f,.6);
 }
+
+body {
+  font-family: "Gotham A", "Gotham B", sans-serif;
+  font-style: normal;
+  /*font-weight: 700;*/
+  background-color: #1B1B1B;
+  color: white !important;
+}
+
+.btn {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background-color: black;
+  margin-right: 10px;
+}
+
+h2, h1 {
+  font-weight: 700;
+  font-size: 4.5em;
+  color: #000;
+  display: inline-block !important;
+  line-height: 1.2em;
+  letter-spacing: -1.5px;
+  text-transform: capitalize;
+  color: white !important;
+}
+
+h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+}
+
+.yellowBackground {
+  background-color: #FDB930;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -1.7px;
+}
+
+a:visited {
+    color: #FDB930;
+}
+input {
+  color: black;
+}
+
+/*input
+{
+    border: 0 !important;
+    border-bottom: 2px solid white !important;
+    outline: 0;
+    background-color: #1B1B1B;
+    color: white;
+    width: 100%;
+    margin-bottom: 20px;
+}*/
