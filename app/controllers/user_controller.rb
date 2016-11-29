@@ -1,5 +1,4 @@
 class UserController < ApplicationController
-  before_action :is_authenticated, only: [:create]
   before_action :current_user, only: [:index]
   
   def index
