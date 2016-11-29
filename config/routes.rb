@@ -4,7 +4,7 @@ Rails.application.routes.draw do
  
   post 'setbacks' => 'setbacks#create'
 
-  get ':vice_id/setbacks/new' => 'setbacks#new'
+  get ':vice_id/setbacks/new' => 'setbacks#new', as: 'newsetback'
 
   get ':vice_id/setbacks/:id' => 'setbacks#show'
 
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  resources :setbacks
   resources :vices
   resources :user
 end

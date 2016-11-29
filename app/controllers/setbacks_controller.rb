@@ -3,8 +3,8 @@ class SetbacksController < ApplicationController
   before_action :current_user
 
   def new
-  	@setback = Setback.new
     @vice = Vice.find(params[:vice_id])
+    @setback = Setback.new
   end
 
   def create
