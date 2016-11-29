@@ -10,7 +10,7 @@
   </div>
   <div>
     <%= s.label :setback_date %>
-    <%= s.date_field :setback_date, :value => Time.now.strftime('%Y-%m-%d') %>
+    <%= s.date_field :setback_date, :value => Time.now %>
   </div>
 
   <%= s.hidden_field :vice_id, :value => @vice.id %>
