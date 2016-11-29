@@ -1,4 +1,6 @@
+<div class="container">
 <h2>Edit <%= @vice.vice_name %></h2>
+<%= link_to "Back to all vices", "/vices" %>
 
 <%= form_for @vice do |v| %>
 	<div>
@@ -17,8 +19,8 @@
 		<%= v.label :goal_cost %>
 		<%= v.text_field :goal_cost %> 
 	</div>
-	<%= v.submit %>
+	<button type="submit" class="btn navbar-btn btn-toolbar">Update</button>
 
 <% end %>
 
-<%= link_to "Back to all vices", "/vices" %>
+</div>

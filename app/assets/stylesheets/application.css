@@ -68,7 +68,7 @@ input {
   color: black;
 }
 
-/*input
+input
 {
     border: 0 !important;
     border-bottom: 2px solid white !important;
@@ -77,4 +77,15 @@ input {
     color: white;
     width: 100%;
     margin-bottom: 20px;
-}*/
+}
+
+.jumbotron {
+  background-image: url('hero.jpg');
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 38% 20%; 
+  border-radius: 0 !important;
+  background-position: 30% 60%; 
+
+}
