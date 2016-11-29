@@ -24,6 +24,10 @@
     <%= v.label :goal_cost %>
     <%= v.text_field :goal_cost %>    
   </div>
+  <div>
+    <%= v.label :setback_date %>
+    <%= v.date_field :setback_date, :value => Time.now.strftime('%Y-%m-%d') %>
+  </div>
 
   <%= v.submit %>
 
