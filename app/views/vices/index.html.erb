@@ -1,28 +1,23 @@
-<h1>Vices#index</h1>
-<p>Find me in app/views/vices/index.html.erb</p>
-
-
-<h2>All Vices</h2>
-<%= link_to "Add New Vice", new_vice_path, class: 'btn btn-info' %>
+<h3 class="pull-right"><%= @current_user[:name] %>'s Vices</h3>
 
 <% if @vices %>
-	
-	<% (0...@vices.length).each do |i| %>
-		<div>
-			<h3><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></h3>
+<% (0...@vices.length).each do |i| %>
+<div>
+	<h2><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></h2>
 
-				<div><strong>Vice Cost:</strong> <%= @vices[i].vice_cost %></div>
-				<div><strong>Goal:</strong> <%= @vices[i].goal_name %></div>
-				<div><strong>Goal Cost:</strong> <%= @vices[i].goal_cost %></div>
+	<div><strong>Total Money Saved:</strong> <%= @vices[i].vice_cost %></div>
+	<div><strong>Goal:</strong> <%= @vices[i].goal_name %></div>
+	<div><strong>Days Till Goal:</strong> <%= @vices[i].goal_cost %></div>
 
-
-			<%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn-sm btn-primary' %>
-			<%= link_to "Delete", vice_path(@vices[i]), method: :delete, class: 'btn-sm btn-danger' %>
-		</div>
-	<% end %>
-
-<% else %>
-	Vices not found.
+	<%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn-sm btn-toolbar navbar-btn' %>
+	<%= link_to "Delete", vice_path(@vices[i]), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
 <% end %>
 
-
+<% else %>
+Vices not found.
+<% end %>
+</div>
+<div class="clearfix"></div>
+<div class="container center-block text-center">
+<%= link_to "Add New Vice", new_vice_path, class: 'btn' %>
+</div>
