@@ -1,0 +1,19 @@
+<h1>Setbacks#new</h1>
+<p>Find me in app/views/setbacks/new.html.erb</p>
+
+
+
+<%= form_for @setback do |s| %>
+  <div>
+    <%= s.label :setback_date %>
+    <%= s.text_field :setback_date %>    
+  </div>
+  <div>
+    <%= s.label :setback_cost %>
+    <%= s.text_field :setback_cost %>    
+  </div>
+
+
+  <%= s.submit %>
+
+<% end %>

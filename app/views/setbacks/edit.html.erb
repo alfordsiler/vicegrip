@@ -1,0 +1,20 @@
+<h1>Setbacks#edit</h1>
+<p>Find me in app/views/setbacks/edit.html.erb</p>
+
+<h2>Edit <%= @setback.setback_date %></h2>
+
+<%= form_for @setback do |s| %>
+	<div>
+		<%= s.label :setback_date %>
+		<%= s.text_field :setback_date %> 
+	</div>
+	<div>
+		<%= s.label :setback_cost %>
+		<%= s.text_field :setback_cost %> 
+	</div>
+
+	<%= s.submit %>
+
+<% end %>
+
+<%= link_to "Back to all vices", "/vices" %>
