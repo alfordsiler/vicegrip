@@ -11,13 +11,19 @@
    <div><strong>Goal:</strong> <%= @vices[i].goal_name %></div>
    <div><strong>Days Till Goal:</strong> <%= @vices[i].goal_cost %></div>
 
-   <% (0...@vices[i].setbacks.length).each do |s| %>
-   <div>
-    Setback date: <%= @vices[i].setbacks[s].setback_date %> |
-    Setback cost: <%= @vices[i].setbacks[s].setback_cost %>
-  </div>
-
+  <% if @vices[i].setbacks.length > 0 %>
+   	<% (0...@vices[i].setbacks.length).each do |s| %>
+   	<div>
+   	 Setback date: <%= @vices[i].setbacks[s].setback_date %> |
+   	 Setback cost: <%= @vices[i].setbacks[s].setback_cost %>
+  	</div>
   <% end %>
+  <% else %>
+    <div><em>No setbacks so far - that's fucking super.</em></div><br>
+  <% end %>
+
+
+  
 
   <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn-sm btn-toolbar navbar-btn' %>
   <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn-sm btn-toolbar navbar-btn' %>
