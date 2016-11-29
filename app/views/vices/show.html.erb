@@ -1,6 +1,11 @@
 <!-- <h3 class="text-center">Your vices</h3> -->
 <div class="container">
   <h2>You're Quitting <br> <span class="yellowBackground"> <%= @vice.vice_name %> </span></h2>
+  <h3>Progress:</h3>
+  <div class="progress" style="min-width: 20px;">
+    <div class="progress-bar progress-bar-success progress-bar-striped active progressBar" role="progressbar" style="width: <%= @progress %>%"><span id="progressPercent"><%= @progress %>%</span>
+    </div>
+  </div>  
   <hr>
   <h2>You've Saved <span class="yellowBackground">$<%= @vice.vice_cost  %></span></h2>
   <hr>
@@ -14,10 +19,20 @@
   <hr>
 
 
-	<h1><%= @vice.vice_name %></h1>
-	<p><%= @vice.vice_cost  %></p>
-	<p><%= @vice.goal_name  %></p>
-	<p><%= @vice.goal_cost  %></p>
+  <h1><%= @vice.vice_name %></h1>
+  <p><%= @vice.vice_cost  %></p>
+  <p><%= @vice.goal_name  %></p>
+  <p><%= @vice.goal_cost  %></p>
+
+  <h2>Setbacks:</h2>
+      <% (0...@vice.setbacks.length).each do |s| %>
+        <div>
+        Setback date: <%= @vice.setbacks[s].setback_date %> |
+        Setback cost: <%= @vice.setbacks[s].setback_cost %>
+        </div>
+      <% end %>
+   
+
+  <%= link_to "Add Setback", newsetback_path(:vice_id => @vice[:id]), class: 'btn-sm btn-toolbar navbar-btn' %>
 
 </div>
-
