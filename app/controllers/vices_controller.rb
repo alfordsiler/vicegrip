@@ -35,6 +35,7 @@ class VicesController < ApplicationController
   def show
     @setbacks = Setback.all
     @vice = Vice.find(params[:id])
+    @progress = ((@vice.vice_cost.to_f/@vice.goal_cost.to_f) * 100)
   end
 
   def destroy
