@@ -1,0 +1,47 @@
+class SetbacksController < ApplicationController
+  before_action :is_authenticated, only: [:new, :create]
+  before_action :current_user
+
+  def new
+  	@setback = Setback.new
+  end
+
+  def create
+  	# @vice = Vice.find(params[:vice_id])
+   #  @current.vices.create(vice_params)
+   #  redirect_to vices_path
+    @current_user.vices.create(setback_params)
+    redirect_to vice_path
+  end
+
+  def destroy
+    Setback.find(params[:id]).delete
+    redirect_to vice_path
+  end
+
+  def edit
+  	@setback = Setback.find(params[:id])
+  end
+
+  def update
+    s = Setback.find(params[:id])
+    s.update(setback_params)
+    redirect_to vice_path
+  end
+
+  def show
+  	@setback = Setback.find(params[:id])
+  end
+
+  def destroy
+    Setback.find(params[:id]).delete
+    redirect_to vice_path
+  end
+
+  private
+
+  def setback_params 
+    params.require(:comment).permit(:setback_date, :setback_cost, :vice_id)  
+  end
+
+end

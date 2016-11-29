@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
   root 'home#index'
+ 
+  post 'setbacks' => 'setbacks#create'
+
+  get ':vice_id/setbacks/new' => 'setbacks#new'
+
+  get ':vice_id/setbacks/:id' => 'setbacks#show'
 
   get 'vices' => 'vices#index'
 
