@@ -5,13 +5,15 @@
 
 <%= form_for @setback do |s| %>
   <div>
-    <%= s.label :setback_date %>
-    <%= s.text_field :setback_date %>    
-  </div>
-  <div>
     <%= s.label :setback_cost %>
     <%= s.text_field :setback_cost %>    
   </div>
+  <div>
+    <%= s.label :setback_date %>
+    <%= s.date_field :setback_date, :value => Time.now.strftime('%Y-%m-%d') %>
+  </div>
+
+  <%= s.hidden_field :vice_id, :value => @vice.id %>
 
 
   <%= s.submit %>

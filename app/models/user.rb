@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :vices
   accepts_nested_attributes_for :vices
+  has_many :setbacks
+  accepts_nested_attributes_for :setbacks
 
   validates :name,
   presence: true

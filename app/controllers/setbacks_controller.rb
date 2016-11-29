@@ -4,14 +4,12 @@ class SetbacksController < ApplicationController
 
   def new
   	@setback = Setback.new
+    @vice = Vice.find(params[:vice_id])
   end
 
   def create
-  	# @vice = Vice.find(params[:vice_id])
-   #  @current.vices.create(vice_params)
-   #  redirect_to vices_path
-    @current_user.vices.create(setback_params)
-    redirect_to vice_path
+    @current_user.setbacks.create(setback_params)
+    redirect_to vices_path
   end
 
   def destroy
@@ -41,7 +39,7 @@ class SetbacksController < ApplicationController
   private
 
   def setback_params 
-    params.require(:comment).permit(:setback_date, :setback_cost, :vice_id)  
+    params.require(:setback).permit(:setback_date, :setback_cost, :vice_id)  
   end
 
 end

@@ -2,12 +2,12 @@
   <div class="container">
    <button class="btn navbar-btn btn-toolbar"><a href="/user">User</a></button>
    <button class="btn navbar-btn btn-toolbar"><a href="/vices">Vices</a></button>
-   <!--  <% if @current_user %>
+    <% if @current_user %>
     <%= form_for :user, :url => logout_path, method: :delete do |form| %>
     <%= form.submit 'Logout' %>
     <% end %>
     <% else %>
     <a href="/login">Login</a>
-    <% end %> -->
+    <% end %>
   </div>
 </div>
