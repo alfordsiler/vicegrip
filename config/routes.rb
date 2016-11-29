@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get ':vice_id/setbacks/:id' => 'setbacks#show'
 
+  #get 'setbacks/:id/delete' => 'setbacks#destroy', as: 'delete_setback'
+
   get 'vices' => 'vices#index'
 
   get 'vices/new' => 'vices#new'

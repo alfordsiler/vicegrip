@@ -32,7 +32,7 @@ class SetbacksController < ApplicationController
   end
 
   def destroy
-    Setback.find(params[:id]).delete
+    Setback.find(params[:setback_id]).delete
     redirect_to vice_path
   end
 

@@ -1,18 +1,6 @@
-<h3><%= @current_user[:name] %>, this is your profile page.</h3>
-<br>
-<h4>Username: <%= @current_user[:name] %></h4>
-<h4>Email: <%= @current_user[:email] %></h4>
-
-<h3>Your vices:</h3>
-
-<% @vices.each do |vice| %>
-  <% if @current_user.id == vice.user_id %>
-    <div class="well">
-
-      <h4> Title: <%= vice.vice_name %> </h4>
-
-    </div>  
-  <% end %>
-<% end %>
-
-<br>
+<div class="container">
+  <h3><%= @current_user[:name] %>, this is your profile page.</h3>
+  <br>
+  <h4>Username: <%= @current_user[:name] %></h4>
+  <h4>Email: <%= @current_user[:email] %></h4>
+</div>
