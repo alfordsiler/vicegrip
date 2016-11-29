@@ -32,6 +32,8 @@ class VicesController < ApplicationController
     @vice = Vice.find(params[:id])
     @progress = ((@vice.vice_cost.to_f/@vice.goal_cost.to_f) * 100)
     # @saved = @vice.vice_cost * time passed - setback total
+    @setbackTotal = Setback.where(:vice_id => @vice.id ).sum(:setback_cost)
+
   end
 
   def destroy
