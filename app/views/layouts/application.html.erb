@@ -6,20 +6,18 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/7176334/7821172/css/fonts.css" />
+  <link rel="stylesheet" href="bower_components/Morphext/dist/morphext.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
   <script src="//code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="bower_components/Morphext/dist/morphext.min.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
-  <%= render 'partials/navbar' %>
-  <div class="container">
-    <div class="row">
-      <%= render 'partials/flash' %>
-      <%= yield %>
-    </div>
-  </div>
+  <%= render 'partials/navbar' %>    
+  <%= render 'partials/flash' %>
+  <%= yield %>
 </body>
 </html>

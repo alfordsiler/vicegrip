@@ -1,9 +1,9 @@
+<div class="container">
+  <h2>Sign Up</h2>
+  <%= link_to "<< Home", root_path %>
+  <br><br>
 
-<h2>Sign Up</h2>
-<%= link_to "<< Home", root_path %>
-<br><br>
-
-<%= form_for :user do |u| %>
+  <%= form_for :user do |u| %>
   <div>
     <%= u.label :name %>
     <%= u.text_field :name %>    
@@ -19,4 +19,5 @@
 
   <%= u.submit %>
 
-<% end %>
+  <% end %>
+</div>
