@@ -4,7 +4,7 @@ Rails.application.routes.draw do
  
   post 'setbacks' => 'setbacks#create'
 
-  get 'setbacks/new' => 'setbacks#new'
+  get ':vice_id/setbacks/new' => 'setbacks#new'
 
   get ':vice_id/setbacks/:id' => 'setbacks#show'
 
