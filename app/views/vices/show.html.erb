@@ -20,6 +20,7 @@
   <hr>
 
   <h2>Setbacks:</h2>
+    <% if @vice.setbacks.length > 0 %>
       <% (0...@vice.setbacks.length).each do |s| %>
         <div>
         Setback date: <%= @vice.setbacks[s].setback_date %> |
@@ -27,6 +28,9 @@
          <%= link_to "Delete", setback_path(:setback_id => @vice.setbacks[s].id), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
         </div>
       <% end %>
+    <% else %>
+      <div class="small"><em>No setbacks so far - great job!</em></div><br>
+    <% end %>
    
   <h3>MATHS!</h3>
   Setbacks total: <%= @setbackTotal %>
