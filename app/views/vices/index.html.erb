@@ -21,7 +21,7 @@
 
   <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn-sm btn-toolbar navbar-btn' %>
   <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn-sm btn-toolbar navbar-btn' %>
-  <%= link_to "Delete", vice_path(@vices[i]), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
+  <%= link_to "Delete", vice_path(:id => @vices[i].id), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
   <% end %>
   <% end %>
 

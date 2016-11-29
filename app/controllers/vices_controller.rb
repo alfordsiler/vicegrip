@@ -39,7 +39,7 @@ class VicesController < ApplicationController
 
   def destroy
     @current_user.vices.delete(Vice.find(params[:id]));
-    # Vice.find(params[:id]).delete
+    Vice.find(params[:id]).delete
     redirect_to vices_path
   end
 
