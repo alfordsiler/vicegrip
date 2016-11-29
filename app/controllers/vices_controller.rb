@@ -5,6 +5,7 @@ class VicesController < ApplicationController
   def index
     @vices = Vice.all
     @users = User.all
+    @setbacks = Setback.all
   end
 
   def new
@@ -27,7 +28,7 @@ class VicesController < ApplicationController
   end
 
   def show
-    @setback = Setback.all
+    @setbacks = Setback.all
     @vice = Vice.find(params[:id])
     @progress = ((@vice.vice_cost.to_f/@vice.goal_cost.to_f) * 100)
     # @saved = @vice.vice_cost * time passed - setback total
