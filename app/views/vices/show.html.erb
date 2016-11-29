@@ -13,9 +13,10 @@
   <span class="yellowBackground"><%= @vice.goal_name  %></span></h2>
   <hr>
 
+
+  <h1><%= @vice.vice_name %></h1>
+  <p><%= @vice.vice_cost  %></p>
+  <p><%= @vice.goal_name  %></p>
   <p><%= @vice.goal_cost  %></p>
 
-  <%= progress_bar 0.45, alternative: 'success', active: true  %>
-  => <div class="progress"><div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span class="sr-only">45%</span></div></div>  
-  </div>
-
+</div>
