@@ -1,17 +1,19 @@
 <h1>Setbacks#edit</h1>
 <p>Find me in app/views/setbacks/edit.html.erb</p>
 
+
+<h1> this doesn't work yet</h1>
 <h2>Edit <%= @setback.setback_date %></h2>
 
 <%= form_for @setback do |s| %>
-	<div>
-		<%= s.label :setback_date %>
-		<%= s.text_field :setback_date %> 
-	</div>
-	<div>
-		<%= s.label :setback_cost %>
-		<%= s.text_field :setback_cost %> 
-	</div>
+  <div>
+    <%= s.label :setback_cost %>
+    <%= s.text_field :setback_cost %>    
+  </div>
+  <div>
+    <%= s.label :setback_date %>
+    <%= s.date_field :setback_date, :value => Time.now.strftime('%Y-%m-%d') %>
+  </div>
 
 	<%= s.submit %>
 
