@@ -19,6 +19,21 @@
 	<p><%= @vice.goal_name  %></p>
 	<p><%= @vice.goal_cost  %></p>
 
+  <h2>Setbacks:</h2>
+      <% (0...@vice.setbacks.length).each do |s| %>
+        <div>
+        Setback date: <%= @vice.setbacks[s].setback_date %> |
+        Setback cost: <%= @vice.setbacks[s].setback_cost %>
+        </div>
+
+      <% end %>
+   
+
+
+
+
+
+
   <%= link_to "Add Setback", newsetback_path(:vice_id => @vice[:id]), class: 'btn-sm btn-toolbar navbar-btn' %>
 
 </div>

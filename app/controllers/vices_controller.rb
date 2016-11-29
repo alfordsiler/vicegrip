@@ -33,6 +33,7 @@ class VicesController < ApplicationController
   end
 
   def show
+    @setbacks = Setback.all
     @vice = Vice.find(params[:id])
   end
 
