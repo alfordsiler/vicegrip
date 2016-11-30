@@ -21,8 +21,10 @@
 
   <h2>Setbacks:</h2>
     <% if @vice.setbacks.length > 0 %>
+      <h2>Days since your last setback: <span class="yellowBackground"><%= (((Time.now).to_i) - (@vice.setbacks.maximum(:setback_date)).to_i) / 1.day  - 1 %></span></h2>
       <% (0...@vice.setbacks.length).each do |s| %>
         <div>
+
         Setback date: <%= @vice.setbacks[s].setback_date %> |
         Setback cost: $<%= @vice.setbacks[s].setback_cost %>
          <%= link_to "Delete", setback_path(:setback_id => @vice.setbacks[s].id), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
