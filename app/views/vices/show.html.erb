@@ -21,7 +21,7 @@
 
   <h2>Setbacks:</h2>
     <% if @vice.setbacks.length > 0 %>
-      <h2>Days since your last setback: <span class="yellowBackground"><%= @since %></span></h2>
+      <h2>Days since your last setback: <span class="yellowBackground"><%= (((Time.now).to_i) - (@vice.setbacks.maximum(:setback_date)).to_i) / 1.day  - 1 %></span></h2>
       <% (0...@vice.setbacks.length).each do |s| %>
         <div>
 

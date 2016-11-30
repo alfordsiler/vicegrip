@@ -28,15 +28,14 @@ class VicesController < ApplicationController
   end
 
   def show
-    @setbacks = Setback.all
-    @setback = Setback.find(params[:id])
     @vice = Vice.find(params[:id])
+    @setbacks = Setback.all
     @setbackTotal = Setback.where(:vice_id => @vice.id ).sum(:setback_cost)
     @time_passed = (Time.now - @vice.created_at).to_i / 1.day
     @saved = @vice.vice_cost * @time_passed - @setbackTotal
     @progress = ((@saved.to_f/@vice.goal_cost.to_f) * 100)
     @until = ((@vice.goal_cost - @saved).to_f / @vice.vice_cost.to_f).to_i
-    @since = @setback.setback_date
+    
   end
 
   def destroy
