@@ -1,27 +1,28 @@
 <div class="container fadeIn">
-<h2>Edit <span class="yellowBackground"><%= @vice.vice_name %></span></h2>
-<div class="clearfix"></div>
-<%= link_to "Back to all vices", "/vices" %>
+	<h2>Edit <span class="yellowBackground"><%= @vice.vice_name %></span></h2>
+		<div class="clearfix"></div>
+		<%= link_to "<< Vices", vices_path %>
+		<br><br>
 
-<%= form_for @vice do |v| %>
-	<div>
-		<%= v.label :vice_name %>
-		<%= v.text_field :vice_name %> 
-	</div>
-	<div>
-		<%= v.label :vice_cost %>
-		<%= v.text_field :vice_cost %> 
-	</div>
-	<div>
-		<%= v.label :goal_name %>
-		<%= v.text_field :goal_name %> 
-	</div>
-	<div>
-		<%= v.label :goal_cost %>
-		<%= v.text_field :goal_cost %> 
-	</div>
-	<button type="submit" class="btn navbar-btn btn-toolbar">Update</button>
+		<%= form_for @vice do |v| %>
+		<div>
+			<%= v.label :vice_name %>
+			<%= v.text_field :vice_name %> 
+		</div>
+		<div>
+			<%= v.label :vice_cost %>
+			<%= v.text_field :vice_cost %> 
+		</div>
+		<div>
+			<%= v.label :goal_name %>
+			<%= v.text_field :goal_name %> 
+		</div>
+		<div>
+			<%= v.label :goal_cost %>
+			<%= v.text_field :goal_cost %> 
+		</div>
+		<button type="submit" class="btn navbar-btn btn-toolbar">Update</button>
 
-<% end %>
+		<% end %>
 
 </div>

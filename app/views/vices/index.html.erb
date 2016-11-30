@@ -31,8 +31,8 @@
    <div><strong>Vice cost per day:</strong> $<%= @vices[i].vice_cost %></div>
    <div><strong>Goal:</strong> <%= @vices[i].goal_name %></div>
    <div><strong>Total Goal Cost:</strong> $<%= @vices[i].goal_cost %></div>
-
-
+      <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn btn-toolbar navbar-btn' %>
+      <%= link_to "Delete", vice_path(:id => @vices[i].id, :vice_id => @vices[i].id), method: :delete, data: { confirm: "Did you really conquer your vice?" }, class: 'btn btn-toolbar navbar-btn' %>
   <hr>
   </div>
 
@@ -47,10 +47,7 @@
   <% else %>
     <div><em>No setbacks so far - that's fucking super.</em></div><br>
   <% end %>
-  
   <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn btn-toolbar navbar-btn' %>
-  <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn btn-toolbar navbar-btn' %>
-  <%= link_to "Delete", vice_path(:id => @vices[i].id, :vice_id => @vices[i].id), method: :delete, class: 'btn btn-toolbar navbar-btn' %>
   <hr>
   <% end %>
   <% end %>
