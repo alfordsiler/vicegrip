@@ -1,5 +1,6 @@
 <div class="container fadeIn">
-<h2>Edit <%= @vice.vice_name %></h2>
+<h2>Edit <span class="yellowBackground"><%= @vice.vice_name %></span></h2>
+<div class="clearfix"></div>
 <%= link_to "Back to all vices", "/vices" %>
 
 <%= form_for @vice do |v| %>

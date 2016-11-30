@@ -1,14 +1,16 @@
-<div class="container">
+<div class="container fadeIn">
   <h3 class="pull-right"><%= @current_user[:name] %>'s Vices</h3>
-
+  <div class="clearfix"></div>
+  <%= link_to "Add New Vice", new_vice_path, class: 'btn pull-right' %>
   <% if @vices %>
   <% (0...@vices.length).each do |i| %>
   <% if @current_user.id == @vices[i].user_id %>
   <div>
-   <h2><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></h2>
+   <h2><span class="yellowBackground"><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></span></h2>
+
 
   <div class="progress" style="min-width: 20px; max-width: 350px;">
-    <div class="progress-bar progress-bar-warning progress-bar-striped active progressBar" role="progressbar" style="width: <%= (((@vices[i].vice_cost * ((Time.now - @vices[i].created_at).to_i / 1.day ) - (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100) %>%"><span id="progressPercent"><%= (( (@vices[i].vice_cost * ((Time.now - @vices[i].created_at).to_i / 1.day) -  (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100) %>%</span>
+    <div class="progress-bar progress-bar-warning progress-bar-striped active progressBar" role="progressbar" style="width: <%= (((@vices[i].vice_cost * ((Time.now - @vices[i].created_at).to_i / 1.day ) - (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100) %>%"><span id="progressPercent"><%= (( (@vices[i].vice_cost * ((Time.now - @vices[i].created_at).to_i / 1.day) -  (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100).round(0) %>%</span>
     </div>
   </div>  
    <div><strong>Vice cost per day:</strong> $<%= @vices[i].vice_cost %></div>
@@ -31,19 +33,20 @@
     <div><em>No setbacks so far - that's fucking super.</em></div><br>
   <% end %>
   
-  <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn-sm btn-toolbar navbar-btn' %>
-  <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn-sm btn-toolbar navbar-btn' %>
-  <%= link_to "Delete", vice_path(:id => @vices[i].id), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
+  <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn btn-toolbar navbar-btn' %>
+  <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn btn-toolbar navbar-btn' %>
+  <%= link_to "Delete", vice_path(:id => @vices[i].id, :vice_id => @vices[i].id), method: :delete, class: 'btn btn-toolbar navbar-btn' %>
+  <hr>
   <% end %>
   <% end %>
 
   <% else %>
   Vices not found.
+  <%= link_to "Add New Vice", new_vice_path, class: 'btn' %>
   <% end %>
 </div>
 
 <div class="clearfix"></div>
 <div class="container center-block text-center">
-  <%= link_to "Add New Vice", new_vice_path, class: 'btn' %>
 </div>
 </div>
