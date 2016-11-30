@@ -1,5 +1,6 @@
 <!-- <h3 class="text-center">Your vices</h3> -->
 <div class="container fadeIn">
+<%= link_to "<< Vices", vices_path %>
   <h2>You've Quit <span class="yellowBackground"> <%= @vice.vice_name %> </span>for the last <span class="yellowBackground"><%= time_ago_in_words(@vice.created_at) %></h2>
   <h3>Progress:</h3>
   <div class="progress" style="min-width: 20px;">
@@ -23,19 +24,17 @@
     <h2>Days since your last setback: <span class="yellowBackground"><%= (((Time.now).to_i) - (@vice.setbacks.maximum(:setback_date)).to_i) / 1.day  - 1 %></span></h2>
     <% (0...@vice.setbacks.length).each do |s| %>
     <div>
-
-      Setback date: <%= @vice.setbacks[s].setback_date %> |
-      Setback cost: $<%= @vice.setbacks[s].setback_cost %>
-      <%= link_to "Delete", setback_path(:setback_id => @vice.setbacks[s].id), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
-    </div>
-    <% end %>
+        Setback date: <%= @vice.setbacks[s].setback_date.strftime("%B, %d %Y") %> |
+        Setback cost: $<%= @vice.setbacks[s].setback_cost %>
+         <%= link_to "Delete", setback_path(:setback_id => @vice.setbacks[s].id), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
+        </div>
+      <% end %>
     <% else %>
     <div><em>No setbacks so far - that's fucking super.</em></div><br>
     <% end %>
-    
-    <h3>MATHS!</h3>
-    Setbacks total: <%= @setbackTotal %>
-
+   
+  <h3>MATHS!</h3>
+  Setbacks total: $<%= @setbackTotal %>
 
     <%= link_to "Add Setback", newsetback_path(:vice_id => @vice[:id]), class: 'btn-sm btn-toolbar navbar-btn' %>
 

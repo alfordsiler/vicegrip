@@ -39,11 +39,9 @@ class VicesController < ApplicationController
   end
 
   def destroy
-    @current_user.vices.delete(Vice.find(params[:id]));
     @vice = Vice.find(params[:id])
     @vice.setbacks.delete(Setback.where(:vice_id => @vice.id ))
     Vice.find(params[:id]).delete
-
     redirect_to vices_path
   end
 
