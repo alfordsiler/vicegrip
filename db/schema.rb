@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20161129172824) do
   enable_extension "plpgsql"
 
   create_table "setbacks", force: :cascade do |t|
-    t.date     "setback_date"
+    t.datetime "setback_date"
     t.integer  "setback_cost"
     t.integer  "user_id"
     t.integer  "vice_id"
