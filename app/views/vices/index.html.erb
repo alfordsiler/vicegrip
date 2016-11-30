@@ -30,10 +30,7 @@
   <% else %>
     <div><em>No setbacks so far - that's fucking super.</em></div><br>
   <% end %>
-
-
   
-
   <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn-sm btn-toolbar navbar-btn' %>
   <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn-sm btn-toolbar navbar-btn' %>
   <%= link_to "Delete", vice_path(:id => @vices[i].id, :vice_id => @vices[i].id), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
