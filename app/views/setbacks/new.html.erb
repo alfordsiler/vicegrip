@@ -6,11 +6,11 @@
 <%= form_for @setback do |s| %>
   <div>
     <%= s.label :setback_cost %>
-    <%= s.number_field :setback_cost %>    
+    <%= s.number_field :setback_cost, :required => true %>    
   </div>
   <div>
     <%= s.label :setback_date %>
-    <%= s.date_field :setback_date, :value => Time.now.strftime('%Y-%m-%d') %>
+    <%= s.date_field :setback_date, :value => Time.now.strftime('%Y-%m-%d'), :required => true %>
   </div>
 
   <%= s.hidden_field :vice_id, :value => @vice.id %>
