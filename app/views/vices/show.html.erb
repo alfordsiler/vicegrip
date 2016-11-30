@@ -4,8 +4,27 @@
   <h2>You've Quit <span class="yellowBackground"> <%= @vice.vice_name %></span> for the last <span class="yellowBackground"><%= time_ago_in_words(@vice.created_at) %></h2>
   <h3>Progress:</h3>
   <div class="progress" style="min-width: 20px;">
-    <div class="progress-bar progress-bar-warning progress-bar-striped active progressBar" role="progressbar" style="width: <%= @progress %>%"><span id="progressPercent"><%= @progress %>%</span>
-    </div>
+    <% if @progress <= 30 %>
+      <div class="progress-bar progress-bar-danger progress-bar-striped active progressBar" role="progressbar" style="width: <%= @progress %>%"><span id="progressPercent"><%= @progress %>%</span>
+      </div>
+        <% if @vice.setbacks.length > 0 %>
+          <div class="progress-bar progress-bar-info progress-bar-striped active progressBar" role="progressbar" style="width: <%= @couldp %>%"><span id="progressPercent"><%= @couldp %>%</span>
+          </div>
+        <% end %>   
+    <% elsif @progress <= 90 %> 
+      <div class="progress-bar progress-bar-warning progress-bar-striped active progressBar" role="progressbar" style="width: <%= @progress %>%"><span id="progressPercent"><%= @progress %>%</span>
+      </div>
+        <% if @vice.setbacks.length > 0 %>
+          <div class="progress-bar progress-bar-info progress-bar-striped active progressBar" role="progressbar" style="width: <%= @couldp %>%"><span id="progressPercent"><%= @couldp %>%</span>
+          </div>
+        <% end %> 
+    <% else %>
+      <% if @progress >= 100 %>
+        <% @progress = 100 %>
+      <% end %>  
+      <div class="progress-bar progress-bar-success progress-bar-striped active progressBar" role="progressbar" style="width: <%= @progress %>%"><span id="progressPercent"><%= @progress %>%</span>
+      </div>
+    <% end %>   
   </div>  
   <hr>
   <h2>You've Saved <span class="yellowBackground">$<%= @saved %></span> <br> at a daily cost of <span class="yellowBackground">$<%= @vice.vice_cost %></span></h2>
@@ -21,7 +40,7 @@
 
     <h2>Setbacks:</h2>
     <% if @vice.setbacks.length > 0 %>
-    <h2>Days since your last setback: <span class="yellowBackground"><%= (((Time.now).to_i) - (@vice.setbacks.maximum(:setback_date)).to_i) / 1.day  - 1 %></span></h2>
+    <h2>Days since your last setback: <span class="yellowBackground"><%= (((Time.now).to_i) - (@vice.setbacks.maximum(:setback_date)).to_i) / 1.day %></span></h2>
     <% (0...@vice.setbacks.length).each do |s| %>
     <div>
         Setback date: <%= @vice.setbacks[s].setback_date.strftime("%B, %d %Y") %> |
