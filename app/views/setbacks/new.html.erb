@@ -1,7 +1,8 @@
-<h1>Setbacks#new</h1>
-<p>Find me in app/views/setbacks/new.html.erb</p>
-
-
+<div class="container fadeIn">
+<h2>Add a Setback for <span class="yellowBackground"><%= @vice.vice_name %></span></h2>
+    <div class="clearfix"></div>
+    <%= link_to "<< Vices", vices_path %>
+    <br><br>
 
 <%= form_for @setback do |s| %>
   <div>
@@ -19,3 +20,5 @@
   <%= s.submit %>
 
 <% end %>
+
+</div>
