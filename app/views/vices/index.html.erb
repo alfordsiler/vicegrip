@@ -7,15 +7,15 @@
   <div>
    <h2><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></h2>
 
-   <div><strong>Total Money Saved:</strong> <%= @vices[i].vice_cost %></div>
-   <div><strong>Goal:</strong> <%= @vices[i].goal_name %></div>
-   <div><strong>Days Till Goal:</strong> <%= @until %></div>
-
-
   <div class="progress" style="min-width: 20px; max-width: 350px;">
     <div class="progress-bar progress-bar-warning progress-bar-striped active progressBar" role="progressbar" style="width: <%= (((@vices[i].vice_cost * ((Time.now - @vices[i].created_at).to_i / 1.day ) - (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100) %>%"><span id="progressPercent"><%= (( (@vices[i].vice_cost * ((Time.now - @vices[i].created_at).to_i / 1.day) -  (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100) %>%</span>
     </div>
   </div>  
+   <div><strong>Vice cost per day:</strong> $<%= @vices[i].vice_cost %></div>
+   <div><strong>Goal:</strong> <%= @vices[i].goal_name %></div>
+   <div><strong>Total Goal Cost:</strong> $<%= @vices[i].goal_cost %></div>
+
+
   <hr>
   </div>
 
@@ -23,8 +23,8 @@
      <div>Days since last setback: <%= (((Time.now).to_i) - (@vices[i].setbacks.maximum(:setback_date)).to_i) / 1.day - 1 %></div>
     <% (0...@vices[i].setbacks.length).each do |s| %>
     <div>
-     Setback date: <%= @vices[i].setbacks[s].setback_date %> |
-     Setback cost: <%= @vices[i].setbacks[s].setback_cost %>
+     Setback date: <%= @vices[i].setbacks[s].setback_date.strftime("%B, %d %Y") %> |
+     Setback cost: $<%= @vices[i].setbacks[s].setback_cost %>
     </div>
   <% end %>
   <% else %>

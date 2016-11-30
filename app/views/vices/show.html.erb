@@ -25,7 +25,7 @@
       <% (0...@vice.setbacks.length).each do |s| %>
         <div>
 
-        Setback date: <%= @vice.setbacks[s].setback_date %> |
+        Setback date: <%= @vice.setbacks[s].setback_date.strftime("%B, %d %Y") %> |
         Setback cost: $<%= @vice.setbacks[s].setback_cost %>
          <%= link_to "Delete", setback_path(:setback_id => @vice.setbacks[s].id), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
         </div>
@@ -35,7 +35,7 @@
     <% end %>
    
   <h3>MATHS!</h3>
-  Setbacks total: <%= @setbackTotal %>
+  Setbacks total: $<%= @setbackTotal %>
 
 
   <%= link_to "Add Setback", newsetback_path(:vice_id => @vice[:id]), class: 'btn-sm btn-toolbar navbar-btn' %>
