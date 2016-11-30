@@ -1,28 +1,28 @@
 <div class="container fadeIn">
-<h2>Create A New Vice</h2>
-<br>
-<%= link_to "<< Vices", vices_path %>
-<br><br>
+  <h2>Create A New Vice</h2>
+  <br>
+  <%= link_to "<< Vices", vices_path %>
+  <br><br>
 
-<%= form_for @vice do |v| %>
-  <div>
-    <%= v.label :vice_name %>
-    <%= v.text_field :vice_name, :required => true %>    
-  </div>
-  <div>
-    <%= v.label :vice_cost %>
-    <%= v.number_field :vice_cost, :required => true %>    
-  </div>
-  <div>
-    <%= v.label :goal_name %>
-    <%= v.text_field :goal_name, :required => true %>    
-  </div>
-  <div>
-    <%= v.label :goal_cost %>
-    <%= v.number_field :goal_cost, :required => true %>    
-  </div>
+  <%= form_for @vice do |v| %>
+    <div>
+      <%= v.label :vice_name %>
+      <%= v.text_field :vice_name, :required => true %>    
+    </div>
+    <div>
+      <%= v.label :vice_cost %>
+      <%= v.number_field :vice_cost, :required => true %>    
+    </div>
+    <div>
+      <%= v.label :goal_name %>
+      <%= v.text_field :goal_name, :required => true %>    
+    </div>
+    <div>
+      <%= v.label :goal_cost %>
+      <%= v.number_field :goal_cost, :required => true %>    
+    </div>
 
-  <button type="submit" class="btn navbar-btn btn-toolbar">Submit</button>
+    <button type="submit" class="btn navbar-btn btn-toolbar">Submit</button>
 
-<% end %>
+  <% end %>
 </div>
