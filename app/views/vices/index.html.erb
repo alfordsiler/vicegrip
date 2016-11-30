@@ -11,13 +11,26 @@
    <div><strong>Goal:</strong> <%= @vices[i].goal_name %></div>
    <div><strong>Days Till Goal:</strong> <%= @vices[i].goal_cost %></div>
 
-   <% (0...@vices[i].setbacks.length).each do |s| %>
-   <div>
-    Setback date: <%= @vices[i].setbacks[s].setback_date %> |
-    Setback cost: <%= @vices[i].setbacks[s].setback_cost %>
+  <div class="progress" style="min-width: 20px; max-width: 350px;">
+    <div class="progress-bar progress-bar-warning progress-bar-striped active progressBar" role="progressbar" style="width: <%= (((@vices[i].vice_cost * ((Time.zone.now - @vices[i].created_at).to_i / 1.day ) - (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100) %>%"><span id="progressPercent"><%= (( (@vices[i].vice_cost * ((Time.zone.now - @vices[i].created_at).to_i / 1.day) -  (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100) %>%</span>
+    </div>
+  </div>  
+  <hr>
   </div>
 
+  <% if @vices[i].setbacks.length > 0 %>
+   	<% (0...@vices[i].setbacks.length).each do |s| %>
+   	<div>
+   	 Setback date: <%= @vices[i].setbacks[s].setback_date %> |
+   	 Setback cost: <%= @vices[i].setbacks[s].setback_cost %>
+  	</div>
   <% end %>
+  <% else %>
+    <div><em>No setbacks so far - that's fucking super.</em></div><br>
+  <% end %>
+
+
+  
 
   <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn-sm btn-toolbar navbar-btn' %>
   <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn-sm btn-toolbar navbar-btn' %>

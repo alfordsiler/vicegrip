@@ -87,5 +87,17 @@ input
   background-position: 38% 20%; 
   border-radius: 0 !important;
   background-position: 30% 60%; 
-
 }
+
+.numbers {
+  font-family: "Numbers Premium A", "Numbers Premium B";
+  font-style: normal;
+  font-weight: 400;
+}
+
+#progressPercent {
+  color: #000;
+  font-weight: bold;
+  height: 40px;
+}
+
