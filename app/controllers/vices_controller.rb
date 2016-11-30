@@ -35,6 +35,8 @@ class VicesController < ApplicationController
     @saved = @vice.vice_cost * @time_passed - @setbackTotal
     @progress = ((@saved.to_f/@vice.goal_cost.to_f) * 100).round(0)
     @until = ((@vice.goal_cost - @saved).to_f / @vice.vice_cost.to_f).to_i
+    @could = @vice.vice_cost * @time_passed
+    @couldp = ((@could.to_f/@vice.goal_cost.to_f) * 100).round(0)
     
   end
 
