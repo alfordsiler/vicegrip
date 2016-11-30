@@ -7,25 +7,21 @@
   <div>
    <h2><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></h2>
 
-   <div><strong>Total Money Saved:</strong> $<%= @vices[i].vice_cost %></div>
+   <div><strong>Total Money Saved:</strong> <%= @vices[i].vice_cost %></div>
    <div><strong>Goal:</strong> <%= @vices[i].goal_name %></div>
-   <div><strong>Days Till Goal:</strong> $<%= @vices[i].goal_cost %></div>
-   <div class="progress" style="min-width: 20px;">
-    <div class="progress-bar progress-bar-warning progress-bar-striped active progressBar" role="progressbar" style="width: <%= @progress %>%"><span id="progressPercent"><%= @progress %>%</span>
-    </div>
-    </div>
+   <div><strong>Days Till Goal:</strong> <%= @vices[i].goal_cost %></div>
 
    <% (0...@vices[i].setbacks.length).each do |s| %>
    <div>
     Setback date: <%= @vices[i].setbacks[s].setback_date %> |
-    Setback cost: $<%= @vices[i].setbacks[s].setback_cost %>
+    Setback cost: <%= @vices[i].setbacks[s].setback_cost %>
   </div>
 
   <% end %>
 
   <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn-sm btn-toolbar navbar-btn' %>
   <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn-sm btn-toolbar navbar-btn' %>
-  <%= link_to "Delete", vice_path(:id => @vices[i].id, :vice_id => @vices[i].id), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
+  <%= link_to "Delete", vice_path(:id => @vices[i].id), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
   <% end %>
   <% end %>
 
