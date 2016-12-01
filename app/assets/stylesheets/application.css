@@ -187,3 +187,7 @@ a .btn {
 .progress {
   height: 40px !important;
 }
+
+.morphext > .animated {
+    display: inline-block;
+}
