@@ -32,10 +32,10 @@ class VicesController < ApplicationController
     @setbacks = Setback.all
     @setbackTotal = Setback.where(:vice_id => @vice.id ).sum(:setback_cost)
     @time_passed = (Time.now - @vice.created_at).to_i / 1.day
-    @saved = @vice.vice_cost * @time_passed - @setbackTotal
+    @saved = (@vice.vice_cost / 7 ) * @time_passed - @setbackTotal
     @progress = ((@saved.to_f/@vice.goal_cost.to_f) * 100).round(0)
-    @until = ((@vice.goal_cost - @saved).to_f / @vice.vice_cost.to_f).to_i
-    @could = @vice.vice_cost * @time_passed
+    @until = ((@vice.goal_cost - @saved).to_f / (@vice.vice_cost.to_f / 7 )).to_i
+    @could = (@vice.vice_cost / 7 ) * @time_passed
     @couldp = ((@could.to_f/@vice.goal_cost.to_f) * 100).round(0)
     
   end

@@ -142,3 +142,7 @@ a .btn {
   color: black !important;
   border-radius: 20px;
 }
+
+.morphext > .animated {
+    display: inline-block;
+}
