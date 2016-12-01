@@ -30,7 +30,7 @@
     <% end %>   
   </div>  
   <hr>
-  <h2>You've Saved <span class="yellowBackground">$<%= @saved %></span> <br> at a daily cost of <span class="yellowBackground">$<%= @vice.vice_cost %></span></h2>
+  <h2>You've Saved <span class="yellowBackground">$<%= @saved %></span> <br> at a daily cost of <span class="yellowBackground">$<%= (@vice.vice_cost / 7 ) %></span></h2>
   <hr>
   <h2>Keep it up, you're <span class="yellowBackground"><%= @until %></span> Days Away
     <br>
