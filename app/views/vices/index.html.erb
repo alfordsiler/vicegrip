@@ -8,7 +8,7 @@
   <div>
    <h2><span class="yellowBackground"><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></span></h2>
 
-   <% progress = (((@vices[i].vice_cost * ((Time.now - @vices[i].created_at).to_i / 1.day ) - (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100).round(0) %>
+   <% progress = ((((@vices[i].vice_cost / 7 ) * ((Time.now - @vices[i].created_at).to_i / 1.day ) - (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100).round(0) %>
    <% if progress <= 30 %>
     <% if progress <= 0 %>
         <% progress = 0 %>
@@ -31,7 +31,7 @@
       </div>
     </div> 
    <% end %>   
-   <div><strong>Vice cost per day:</strong> $<%= @vices[i].vice_cost %></div>
+   <div><strong>Vice cost per day:</strong> $<%= @vices[i].vice_cost / 7 %></div>
    <div><strong>Goal:</strong> <%= @vices[i].goal_name %></div>
    <div><strong>Total Goal Cost:</strong> $<%= @vices[i].goal_cost %></div>
       <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn btn-toolbar navbar-btn' %>
