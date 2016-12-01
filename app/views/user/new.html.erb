@@ -1,23 +1,24 @@
 <div class="container">
   <h2>Sign Up</h2>
+  <br>
   <%= link_to "<< Home", root_path %>
   <br><br>
 
   <%= form_for :user do |u| %>
   <div>
     <%= u.label :name %>
-    <%= u.text_field :name :required => true %>    
+    <%= u.text_field :name, :required => true %>    
   </div>
   <div>
     <%= u.label :email %>
-    <%= u.email_field :email :required => true %>
+    <%= u.email_field :email, :required => true %>
   </div>
   <div>
     <%= u.label :pasword %>
-    <%= u.password_field :password :required => true %>
+    <%= u.password_field :password, :required => true %>
   </div>
 
-  <%= u.submit %>
+  <button type="submit" class="btn navbar-btn btn-toolbar">Submit</button>
 
   <% end %>
 </div>
