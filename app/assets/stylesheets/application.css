@@ -116,6 +116,47 @@ input
   letter-spacing: -1.7px;
 }
 
+.yellowBackground a {
+  text-decoration: none;
+}
+
+.yellowBackground a:hover {
+  text-decoration: none;
+  background-color: #1D9898;
+}
+
+#setbacks_container {
+  background-color: #1D9898;
+  padding: 20px 40px;
+  color: black;
+  font-weight: 700;
+  margin: 50px 0;
+  font-size: 1.5em;
+}
+
+.delete_button {
+  color: red;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 0 0 1px 4px;
+}
+
+.delete_button:hover {
+  text-decoration: none;
+  color: #990000;
+}
+
+
+
+.setback_title {
+    font-size: 1.5em;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
 .text-justify {
   text-align-last: center;
 }
@@ -141,6 +182,10 @@ a .btn {
   background-color: #FDB930;
   color: black !important;
   border-radius: 20px;
+}
+
+.progress {
+  height: 40px !important;
 }
 
 .morphext > .animated {
