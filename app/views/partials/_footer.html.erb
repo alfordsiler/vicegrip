@@ -2,7 +2,7 @@
   <div class="container">
    <% if @current_user %>
    <a href="/user"><p class="pull-left">About Us</p></a>
-   <a href="/vices"><p class="pull-right">Place sticky footer content here.</p></a>
+   <p class="pull-right">Logged in as: <%= @current_user[:email] %></p>
    <div class="clearfix"></div>
    <a href="/vices"><p class="pull-left">About Us</p></a>
    <% else %>
