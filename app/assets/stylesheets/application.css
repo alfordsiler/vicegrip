@@ -116,6 +116,39 @@ input
   letter-spacing: -1.7px;
 }
 
+#setbacks_container {
+  background-color: #1D9898;
+  padding: 20px;
+  color: black;
+  font-weight: 700;
+  margin: 50px ;
+  max-width: 600px;
+  font-size: 1.5em;
+}
+
+.delete_button {
+  color: red;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 0 0 1px 4px;
+}
+
+.delete_button:hover {
+  text-decoration: none;
+  color: #990000;
+}
+
+
+
+.setback_title {
+    font-size: 1.5em;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
 .text-justify {
   text-align-last: center;
 }

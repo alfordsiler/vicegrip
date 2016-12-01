@@ -40,18 +40,38 @@
     <% if @vice.setbacks.length > 0 %>
     <h2>You've had <span class="yellowBackground"><%= @vice.setbacks.count %></span> setbacks so far, costing you a total of <span class="yellowBackground">$<%= @setbackTotal %></span>.</h2>
     <h2>It's been <span class="yellowBackground"><%= (((Time.now).to_i) - (@vice.setbacks.maximum(:setback_date)).to_i) / 1.day %></span> days since your last setback. </h2>
-    <% (0...@vice.setbacks.length).each do |s| %>
-    <div>
-        Setback date: <%= @vice.setbacks[s].setback_date.strftime("%B, %d %Y") %> |
-        Setback cost: $<%= @vice.setbacks[s].setback_cost %>
-         <%= link_to "Delete", setback_path(:setback_id => @vice.setbacks[s].id), method: :delete, class: 'btn-sm btn-toolbar navbar-btn' %>
-        </div>
-      <% end %>
-    <% else %>
-    <div><em>No setbacks so far - that's fucking super.</em></div><br>
-    <% end %>
+
+    <div id="setbacks_container">
+      <div class="row">
+        <div class="col-xs-6">
+    
+          <% (0...@vice.setbacks.length).each do |s| %>
+          <div class="setback_title">Setbacks:</div>
+          <div>
+
+          <div class="setback">
+            
+            <div style="display: inline;">
+              <span class="yellowBackground" style="margin-right: 10px;">
+              $<%= @vice.setbacks[s].setback_cost %>
+              </span> on <%= @vice.setbacks[s].setback_date.strftime("%m/%d/%Y") %>
+            </div>
+            <div style="display: inline; color: red;">
+              <%= link_to "X", setback_path(:setback_id => @vice.setbacks[s].id), method: :delete, class: 'delete_button' %>
+            </div>
+          </div>
 
 
-    <%= link_to "Add Setback", newsetback_path(:vice_id => @vice[:id]), class: 'btn btn-toolbar navbar-btn' %>
+
+          </div>
+          <% end %>
+          <% else %>
+          <div><em>You've had no setbacks so far. That's fucking super. Keep it up.</em></div><br>
+          <% end %>
+      </div>
+      <div class="col-sm-6" style="display: flex; align-items: center; justify-content: flex-end;">
+        <%= link_to "Add Setback", newsetback_path(:vice_id => @vice[:id]), class: 'btn btn-toolbar navbar-btn' %>
+      </div>
+    </div>
 
   </div>
