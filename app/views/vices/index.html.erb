@@ -10,6 +10,9 @@
 
    <% progress = (((@vices[i].vice_cost * ((Time.now - @vices[i].created_at).to_i / 1.day ) - (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100).round(0) %>
    <% if progress <= 30 %>
+    <% if progress <= 0 %>
+        <% progress = 0 %>
+      <% end %> 
     <div class="progress" style="min-width: 20px; max-width: 350px;">
       <div class="progress-bar progress-bar-danger progress-bar-striped active progressBar" role="progressbar" style="width: <%= progress %>%"><span id="progressPercent"><%= progress %>%</span>
       </div>

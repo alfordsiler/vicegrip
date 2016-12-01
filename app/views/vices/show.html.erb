@@ -5,6 +5,9 @@
   <h3>Progress:</h3>
   <div class="progress" style="min-width: 20px;">
     <% if @progress <= 30 %>
+      <% if @progress <= 0 %>
+        <% @progress = 0 %>
+      <% end %>  
       <div class="progress-bar progress-bar-danger progress-bar-striped active progressBar" role="progressbar" style="width: <%= @progress %>%"><span id="progressPercent"><%= @progress %>%</span>
       </div>
         <% if @vice.setbacks.length > 0 %>
