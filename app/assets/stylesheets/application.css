@@ -79,7 +79,7 @@ input
 }
 
 .jumbotron {
-  background-image: url('hero.jpg');
+  background: image_url('hero.jpg');
   height: 400px;
   background-repeat: no-repeat;
   background-size: cover;
