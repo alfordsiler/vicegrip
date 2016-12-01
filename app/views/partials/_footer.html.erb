@@ -1,0 +1,13 @@
+<div class="footer">
+  <div class="container">
+   <% if @current_user %>
+   <a href="/user"><p class="pull-left">About Us</p></a>
+   <a href="/vices"><p class="pull-right">Place sticky footer content here.</p></a>
+   <div class="clearfix"></div>
+   <a href="/vices"><p class="pull-left">About Us</p></a>
+   <% else %>
+   <a href="/login"><button class="btn navbar-btn btn-toolbar pull-right">Log In</button></a>
+   <a href="/signup"><button class="btn navbar-btn btn-toolbar pull-right">Sign Up</button></a>
+   <% end %>
+ </div>
+</div> 
