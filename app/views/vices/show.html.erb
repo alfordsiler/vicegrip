@@ -9,7 +9,7 @@
   <h2>At this rate, you'll be able to reach your goal of  <span class="yellowBackground">$<%= @vice.goal_cost %></span> for <span class="yellowBackground"><%= @vice.goal_name  %></span> in <span class="yellowBackground"><%= @until %></span> days.
   </h2>
 
-  <div class="progress" style="min-width: 20px; margin: 50px 0 50px 0;">
+  <div class="progress" style="min-width: 20px; margin: 50px 0 20px 0;">
     <% if @progress <= 30 %>
       <% if @progress <= 0 %>
         <% @progress = 0 %>
@@ -34,7 +34,24 @@
       <div class="progress-bar progress-bar-success progress-bar-striped active progressBar" role="progressbar" style="width: <%= @progress %>%"><span id="progressPercent"><%= @progress %>%</span>
       </div>
     <% end %>   
-  </div>  
+  </div>
+
+  <div class="row" style="margin-bottom: 50px;">
+    <div class="col-xs-12" style="display: flex; align-items: center; margin-bottom: 10px;">
+      <div style="display: inline-block; margin-right: 10px; width: 20px; height: 20px; background-color: #d9534f; border-radius: 4px; border: 2px solid #fff;">
+      </div>
+      <span style="font-size: 1.3em;">Progress towards goal (w/ setbacks)</span>
+    </div>
+    <div class="col-xs-12" style="display: flex; align-items: center;">
+      <div style="display: inline-block; margin-right: 10px; width: 20px; height: 20px; background-color: #5bc0de; border-radius: 4px; border: 2px solid #fff;">
+      </div>
+      <span style="font-size: 1.3em;">Progress towards goal (w/o setbacks)</span>
+    </div>
+  </div> 
+
+  
+
+
   <hr>
 
     <% if @vice.setbacks.length > 0 %>
@@ -46,7 +63,7 @@
         <div class="col-xs-6">
     
           <% (0...@vice.setbacks.length).each do |s| %>
-          <div class="setback_title">Setbacks:</div>
+          <div class="setback_title">Setbacks</div>
           <div>
 
           <div class="setback">
