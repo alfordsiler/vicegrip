@@ -1,9 +1,15 @@
 <!-- <h3 class="text-center">Your vices</h3> -->
 <div class="container fadeIn">
-<%= link_to "<< Vices", vices_path %>
-  <h2>You've Quit <span class="yellowBackground"> <%= @vice.vice_name %></span> for the last <span class="yellowBackground"><%= time_ago_in_words(@vice.created_at) %></h2>
-  <h3>Progress:</h3>
-  <div class="progress" style="min-width: 20px;">
+  <h2><span class="yellowBackground"><%= time_ago_in_words(@vice.created_at) %></span> ago, you decided to quit <span class="yellowBackground"> <%= @vice.vice_name %></span>.<br>
+  A habit that had been costing you about <span class="yellowBackground">$<%= @vice.vice_cost * 7 %></span> per week.</h2>
+  <hr>
+
+  <h2>So far, you've saved <span class="yellowBackground">$<%= @saved %></span>.</h2>
+
+  <h2>At this rate, you'll be able to reach your goal of  <span class="yellowBackground">$<%= @vice.goal_cost %></span> for <span class="yellowBackground"><%= @vice.goal_name  %></span> in <span class="yellowBackground"><%= @until %></span> days.
+  </h2>
+
+  <div class="progress" style="min-width: 20px; margin: 50px 0 50px 0;">
     <% if @progress <= 30 %>
       <% if @progress <= 0 %>
         <% @progress = 0 %>
@@ -30,20 +36,10 @@
     <% end %>   
   </div>  
   <hr>
-  <h2>You've Saved <span class="yellowBackground">$<%= @saved %></span> <br> at a daily cost of <span class="yellowBackground">$<%= @vice.vice_cost %></span></h2>
-  <hr>
-  <h2>Keep it up, you're <span class="yellowBackground"><%= @until %></span> Days Away
-    <br>
-    From Your Savings Goal of 
 
-    <span class="yellowBackground">$<%= @vice.goal_cost %></span>
-    <br> to 
-    <span class="yellowBackground"><%= @vice.goal_name  %></span></h2>
-    <hr>
-
-    <h2>Setbacks:</h2>
     <% if @vice.setbacks.length > 0 %>
-    <h2>Days since your last setback: <span class="yellowBackground"><%= (((Time.now).to_i) - (@vice.setbacks.maximum(:setback_date)).to_i) / 1.day %></span></h2>
+    <h2>You've had <span class="yellowBackground"><%= @vice.setbacks.count %></span> setbacks so far, costing you a total of <span class="yellowBackground">$<%= @setbackTotal %></span>.</h2>
+    <h2>It's been <span class="yellowBackground"><%= (((Time.now).to_i) - (@vice.setbacks.maximum(:setback_date)).to_i) / 1.day %></span> days since your last setback. </h2>
     <% (0...@vice.setbacks.length).each do |s| %>
     <div>
         Setback date: <%= @vice.setbacks[s].setback_date.strftime("%B, %d %Y") %> |
@@ -54,10 +50,8 @@
     <% else %>
     <div><em>No setbacks so far - that's fucking super.</em></div><br>
     <% end %>
-   
-  <h3>MATHS!</h3>
-  Setbacks total: $<%= @setbackTotal %>
 
-    <%= link_to "Add Setback", newsetback_path(:vice_id => @vice[:id]), class: 'btn-sm btn-toolbar navbar-btn' %>
+
+    <%= link_to "Add Setback", newsetback_path(:vice_id => @vice[:id]), class: 'btn btn-toolbar navbar-btn' %>
 
   </div>
