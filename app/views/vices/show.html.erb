@@ -6,8 +6,16 @@
 
   <h2>So far, you've saved <span class="yellowBackground">$<%= @saved %></span>.</h2>
 
-  <h2>At this rate, you'll be able to reach your goal of  <span class="yellowBackground">$<%= @vice.goal_cost %></span> for <span class="yellowBackground"><%= @vice.goal_name  %></span> in <span class="yellowBackground"><%= @until %></span> days.
+
+  <% if 100  <= @progress %>
+    <h2>YOU DID IT!</h2>
+
+
+  <% else %>
+    <h2>At this rate, you'll be able to reach your goal of  <span class="yellowBackground">$<%= @vice.goal_cost %></span> for <span class="yellowBackground"><%= @vice.goal_name  %></span> in <span class="yellowBackground"><%= @until %></span> days.
   </h2>
+  <% end %>
+
 
   <div class="progress" style="min-width: 20px; margin: 50px 0 20px 0;">
     <% if @progress <= 30 %>
@@ -17,14 +25,14 @@
       <div class="progress-bar progress-bar-danger progress-bar-striped active progressBar" role="progressbar" style="width: <%= @progress %>%"><span id="progressPercent"><%= @progress %>%</span>
       </div>
         <% if @vice.setbacks.length > 0 %>
-          <div class="progress-bar progress-bar-info progress-bar-striped active progressBar" role="progressbar" style="width: <%= @couldp %>%"><span id="progressPercent"><%= @couldp %>%</span>
+          <div class="progress-bar progress-bar-info progress-bar-striped active progressBar" role="progressbar" style="width: <%= @couldp - @progress %>%"><span id="progressPercent"><%= @couldp %>%</span>
           </div>
         <% end %>   
     <% elsif @progress <= 90 %> 
       <div class="progress-bar progress-bar-warning progress-bar-striped active progressBar" role="progressbar" style="width: <%= @progress %>%"><span id="progressPercent"><%= @progress %>%</span>
       </div>
         <% if @vice.setbacks.length > 0 %>
-          <div class="progress-bar progress-bar-info progress-bar-striped active progressBar" role="progressbar" style="width: <%= @couldp %>%"><span id="progressPercent"><%= @couldp %>%</span>
+          <div class="progress-bar progress-bar-info progress-bar-striped active progressBar" role="progressbar" style="width: <%= @couldp - @progress %>%"><span id="progressPercent"><%= @couldp %>%</span>
           </div>
         <% end %> 
     <% else %>
@@ -55,15 +63,20 @@
   <hr>
 
     <% if @vice.setbacks.length > 0 %>
-    <h2>You've had <span class="yellowBackground"><%= @vice.setbacks.count %></span> setbacks so far, costing you a total of <span class="yellowBackground">$<%= @setbackTotal %></span>.</h2>
+    <h2>You've had <span class="yellowBackground"><%= @vice.setbacks.count %></span> 
+    <% if @vice.setbacks.count == 1 %>
+      setback 
+    <% else %>
+      setbacks 
+    <% end %>
+    so far, costing you a total of <span class="yellowBackground">$<%= @setbackTotal %></span>.</h2>
     <h2>It's been <span class="yellowBackground"><%= (((Time.now).to_i) - (@vice.setbacks.maximum(:setback_date)).to_i) / 1.day %></span> days since your last setback. </h2>
 
     <div id="setbacks_container">
       <div class="row">
         <div class="col-xs-6">
-    
-          <% (0...@vice.setbacks.length).each do |s| %>
           <div class="setback_title">Setbacks</div>
+          <% (0...@vice.setbacks.length).each do |s| %>
           <div>
 
           <div class="setback">
@@ -92,3 +105,5 @@
     </div>
 
   </div>
+
+

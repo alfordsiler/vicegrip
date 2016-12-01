@@ -114,12 +114,20 @@ input
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: -1.7px;
-  padding: 0 .2em;
+}
+
+.yellowBackground a {
+  text-decoration: none;
+}
+
+.yellowBackground a:hover {
+  text-decoration: none;
+  background-color: #1D9898;
 }
 
 #setbacks_container {
   background-color: #1D9898;
-  padding: 20px;
+  padding: 20px 40px;
   color: black;
   font-weight: 700;
   margin: 50px 0;
