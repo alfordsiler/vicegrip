@@ -1,67 +1,84 @@
-<div class="container fadeIn">
+<div class="container fadeIn" style="min-height: 600px;">
   <h3 class="pull-right"><%= @current_user[:name] %>'s Vices</h3>
   <div class="clearfix"></div>
   <%= link_to "Add New Vice", new_vice_path, class: 'btn pull-right' %>
-  <% if @vices %>
-  <% (0...@vices.length).each do |i| %>
-  <% if @current_user.id == @vices[i].user_id %>
-  <div>
-   <h2><span class="yellowBackground"><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></span></h2>
+    <% if @current_user.vices.length > 0 %>
+        <% (0...@vices.length).each do |i| %>
+          <% if @current_user.id == @vices[i].user_id %>
+            <div>
+              <h2><span class="yellowBackground"><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></span></h2>
 
-   <% progress = ((((@vices[i].vice_cost / 7 ) * ((Time.now - @vices[i].created_at).to_i / 1.day ) - (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100).round(0) %>
-   <% if progress <= 30 %>
-    <% if progress <= 0 %>
-        <% progress = 0 %>
+                <% progress = ((((@vices[i].vice_cost / 7 ) * ((Time.now - @vices[i].created_at).to_i / 1.day ) - (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100).round(0) %>
+
+                <% if progress <= 0 %>
+                  <% progress = 0 %>
+                <% end %>
+
+                <% if progress <= 30 %>
+                  <div class="progress" style="min-width: 20px; max-width: 350px;">
+                    <div class="progress-bar progress-bar-danger progress-bar-striped active progressBar" role="progressbar" style="width: <%= progress %>%"><span id="progressPercent"><%= progress %>%</span>
+                    </div>
+                  </div>                
+
+                <% elsif progress <= 90 %>
+                  <div class="progress" style="min-width: 20px; max-width: 350px;">
+                    <div class="progress-bar progress-bar-warning progress-bar-striped active progressBar" role="progressbar" style="width: <%= progress %>%"><span id="progressPercent"><%= progress %>%</span>
+                    </div>
+                  </div>
+
+                <% else %>
+                  <% if progress >= 100 %>
+                    <% progress = 100 %>
+                  <% end %> 
+
+                  <div class="progress" style="min-width: 20px; max-width: 350px;">
+                    <div class="progress-bar progress-bar-success progress-bar-striped active progressBar" role="progressbar" style="width: <%= progress %>%"><span id="progressPercent"><%= progress %>%</span>
+                    </div>
+                  </div> 
+                <% end %>
+            </div>
+
+            <div>
+              <strong>Vice cost per day:</strong> $<%= @vices[i].vice_cost / 7 %>
+            </div>
+            <div>
+              <strong>Goal:</strong> <%= @vices[i].goal_name %>
+            </div>
+            <div>
+              <strong>Total Goal Cost:</strong> $<%= @vices[i].goal_cost %>
+            </div>
+            <div>
+              <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn btn-toolbar navbar-btn' %>
+              <%= link_to "Delete", vice_path(:id => @vices[i].id, :vice_id => @vices[i].id), method: :delete, data: { confirm: "Did you really conquer your vice?" }, class: 'btn btn-toolbar navbar-btn' %>
+            </div>
+        <hr>
+
+        <% if @vices[i].setbacks.length > 0 %>
+          <div>
+            Days since last setback: <%= (((Time.now).to_i) - (@vices[i].setbacks.maximum(:setback_date)).to_i) / 1.day %>
+          </div>
+
+          <% (0...@vices[i].setbacks.length).each do |s| %>
+            <div>
+             Setback date: <%= @vices[i].setbacks[s].setback_date.strftime("%B, %d %Y") %> |
+             Setback cost: $<%= @vices[i].setbacks[s].setback_cost %>
+            </div>
+          <% end %>
+          <% else %>
+            <div>
+              <em>No setbacks so far - that's fucking super.</em>
+            </div>
+            <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn btn-toolbar navbar-btn' %>
+            <hr>
+          <% end %> 
+
       <% end %> 
-    <div class="progress" style="min-width: 20px; max-width: 350px;">
-      <div class="progress-bar progress-bar-danger progress-bar-striped active progressBar" role="progressbar" style="width: <%= progress %>%"><span id="progressPercent"><%= progress %>%</span>
+      <% end %>
+    <% else %>
+      <div style="padding: 40px; text-align: center; margin-top: 50px;">
+        <em>No vices saved.</em> 
       </div>
-    </div>
-   <% elsif progress <= 90 %>
-    <div class="progress" style="min-width: 20px; max-width: 350px;">
-      <div class="progress-bar progress-bar-warning progress-bar-striped active progressBar" role="progressbar" style="width: <%= progress %>%"><span id="progressPercent"><%= progress %>%</span>
-      </div>
-    </div>
-   <% else %>
-    <% if progress >= 100 %>
-      <% progress = 100 %>
-    <% end %>  
-    <div class="progress" style="min-width: 20px; max-width: 350px;">
-      <div class="progress-bar progress-bar-success progress-bar-striped active progressBar" role="progressbar" style="width: <%= progress %>%"><span id="progressPercent"><%= progress %>%</span>
-      </div>
-    </div> 
-   <% end %>   
-   <div><strong>Vice cost per day:</strong> $<%= @vices[i].vice_cost / 7 %></div>
-   <div><strong>Goal:</strong> <%= @vices[i].goal_name %></div>
-   <div><strong>Total Goal Cost:</strong> $<%= @vices[i].goal_cost %></div>
-      <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn btn-toolbar navbar-btn' %>
-      <%= link_to "Delete", vice_path(:id => @vices[i].id, :vice_id => @vices[i].id), method: :delete, data: { confirm: "Did you really conquer your vice?" }, class: 'btn btn-toolbar navbar-btn' %>
-  <hr>
-  </div>
+    <% end %> 
 
-  <% if @vices[i].setbacks.length > 0 %>
-     <div>Days since last setback: <%= (((Time.now).to_i) - (@vices[i].setbacks.maximum(:setback_date)).to_i) / 1.day %></div>
-    <% (0...@vices[i].setbacks.length).each do |s| %>
-    <div>
-     Setback date: <%= @vices[i].setbacks[s].setback_date.strftime("%B, %d %Y") %> |
-     Setback cost: $<%= @vices[i].setbacks[s].setback_cost %>
-    </div>
-  <% end %>
-  <% else %>
-    <div><em>No setbacks so far - that's fucking super.</em></div><br>
-  <% end %>
-  <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn btn-toolbar navbar-btn' %>
-  <hr>
-  <% end %>
-  <% end %>
-
-  <% else %>
-  Vices not found.
-  <%= link_to "Add New Vice", new_vice_path, class: 'btn' %>
-  <% end %>
-</div>
-
-<div class="clearfix"></div>
-<div class="container center-block text-center">
-</div>
+ 
 </div>
