@@ -1,13 +1,11 @@
-<div class="footer">
-  <div class="container">
+<div class="footer" style="display: flex; align-items: center; justify-content: space-between;">
+   <div>
+      <span style="font-size: 1.5em;">&copy CaBAob Industries</span>
+   </div>
+
+   <div>
    <% if @current_user %>
-   <a href="/user"><p class="pull-left">About Us</p></a>
-   <p class="pull-right">Logged in as: <%= @current_user[:email] %></p>
-   <div class="clearfix"></div>
-   <a href="/vices"><p class="pull-left">About Us</p></a>
-   <% else %>
-   <a href="/login"><button class="btn navbar-btn btn-toolbar pull-right">Log In</button></a>
-   <a href="/signup"><button class="btn navbar-btn btn-toolbar pull-right">Sign Up</button></a>
+      <p class="pull-right">Logged in as: <%= @current_user[:email] %></p>
    <% end %>
- </div>
+   </div>
 </div> 
