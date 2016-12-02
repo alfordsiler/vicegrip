@@ -1,17 +1,35 @@
 <div class="jumbotron img-responsive center-block fadeIn">
-  <div class="col-md-12 animated text-center fadeIn">
-  <h2 class="text-center">VICE <span class="yellowBackground">GRIP</span></h2>
-    <p class="col-md-6 col-md-offset-3 text-justify">I am a <span id="js-rotating">So Simple, Very Doge, Much Wow, Such Cool</span> Text Rotator</p>
+  <div class="center-block text-center">
+  <h2 class="text-center">Want to Quit <br><span class="yellowBackground" id="js-rotating">Smoking, Doing Heroin, Something Else</span></h2>
+    <p class="text-center text-justify">I am a <span id="js-rotating">So Simple, Very Doge, Much Wow, Such Cool</span> Text Rotator</p>
+  </div>
+</div>
+<div class="clearfix"></div>
+<section id="about">
+  <div class="container center-block text-center">
+    <div class="col-md-4 col-xs-12">
+      <h3>Calculate Costs</h3>
+      <img src="/assets/comp.png" class="img-responsive frontImage">
+      <p>See how much you could save over time by quitting your vice</p>
+
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <h3>Track Progress</h3>
+      <img src="/assets/graph.png" class="-responsive frontImage">
+      <p>Record setbacks and track total your savings over time</p>
+
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <h3>Set Goals</h3>
+      <img src="/assets/rocket.png" class="img-responsive frontImage">
+      <p>Set savings goals and measure your progress</p>
+
     </div>
   </div>
-  <div class="clearfix"></div>
-  <div class="container">
-    
- 
-</div>
+</section>
 <section id="skills">
   <div class="container">
-    
+    <h1>Home#index</h1>
   </div>
 </section>
 
@@ -25,7 +43,7 @@
 
     var pluginName = "Morphext",
         defaults = {
-            animation: "bounceIn",
+            animation: "fadeIn",
             separator: ",",
             speed: 2000,
             complete: $.noop
@@ -83,7 +101,7 @@
 })(jQuery);
   $("#js-rotating").Morphext({
     // The [in] animation type. Refer to Animate.css for a list of available animations.
-    animation: "bounceIn",
+    animation: "fadeIn",
     // An array of phrases to rotate are created based on this separator. Change it if you wish to separate the phrases differently (e.g. So Simple | Very Doge | Much Wow | Such Cool).
     separator: ",",
     // The delay between the changing of each phrase in milliseconds.
