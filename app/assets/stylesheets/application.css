@@ -25,6 +25,7 @@
   font-style: normal;
   background-color: #1B1B1B;
   color: white !important;
+  font-size: 16px;
 }
 
 .btn {
@@ -39,7 +40,7 @@
 
 h2, h1 {
   font-weight: 700;
-  font-size: 4.5em;
+  font-size: 3.8em;
   color: #000;
   display: inline-block !important;
   line-height: 1.3em;
@@ -106,21 +107,28 @@ input
   padding-bottom: 500px;
 }
 
-.yellowBackground {
+.yellowBackground, .yellowBackgroundLink {
   background-color: #FDB930;
   color: #000 ;
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: -1.7px;
+  padding: 0 5px;
 }
 
-.yellowBackground a {
+.yellowBackgroundLink a:hover {
   text-decoration: none;
+  color: #000;
 }
 
-.yellowBackground a:hover {
+.yellowBackgroundLink a {
   text-decoration: none;
+  color: #000;
+}
+
+.yellowBackgroundLink:hover {
   background-color: #1D9898;
+  padding: 0 5px;
 }
 
 #setbacks_container {

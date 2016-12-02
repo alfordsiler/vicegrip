@@ -1,14 +1,16 @@
 <!-- <h3 class="text-center">Your vices</h3> -->
 <div class="container fadeIn">
   <h2><span class="yellowBackground"><%= time_ago_in_words(@vice.created_at) %></span> ago, you decided to quit <span class="yellowBackground"> <%= @vice.vice_name %></span>.<br>
-  A habit that had been costing you about <span class="yellowBackground">$<%= @vice.vice_cost * 7 %></span> per week.</h2>
+  A habit that had been costing you about <span class="yellowBackground">$<%= @vice.vice_cost %></span> per week.</h2>
   <hr>
 
   <h2>So far, you've saved <span class="yellowBackground">$<%= @saved %></span>.</h2>
 
 
   <% if 100  <= @progress %>
-    <h2>YOU DID IT!</h2>
+    <div class="text-center" style="background-color: #1D9898; margin: 30px 0 -30px 0;">
+      <h1 class="teal text-center">YOU DID IT!</h1>
+    </div>
 
 
   <% else %>
@@ -94,7 +96,7 @@
           </div>
           <% end %>
           <% else %>
-          <div><em>You've had no setbacks so far. That's fucking super. Keep it up.</em></div><br>
+          <div><em>You've had no setbacks so far. That's really super. Keep it up.</em></div><br>
           <% end %>
       </div>
       <div class="col-sm-6" style="display: flex; align-items: center; justify-content: flex-end;">
