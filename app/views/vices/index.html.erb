@@ -6,7 +6,7 @@
         <% (0...@vices.length).each do |i| %>
           <% if @current_user.id == @vices[i].user_id %>
             <div>
-              <h2><span class="yellowBackground"><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></span></h2>
+              <h2><span class="yellowBackgroundLink"><a href="vices/<%= @vices[i].id %>"><%= @vices[i].vice_name %></a></span></h2>
 
                 <% progress = ((((@vices[i].vice_cost / 7 ) * ((Time.now - @vices[i].created_at).to_i / 1.day ) - (Setback.where(:vice_id => @vices[i].id ).sum(:setback_cost)) ) .to_f/@vices[i].goal_cost.to_f) * 100).round(0) %>
 
@@ -39,39 +39,24 @@
             </div>
 
             <div>
-              <strong>Vice cost per day:</strong> $<%= @vices[i].vice_cost / 7 %>
+              <strong>Vice cost per day:</strong> <span class="yellowBackground">$<%= @vices[i].vice_cost / 7 %></span>
             </div>
             <div>
-              <strong>Goal:</strong> <%= @vices[i].goal_name %>
+              <strong>Savings Goal:</strong> <span class="yellowBackground">$<%= @vices[i].goal_cost %> <span style="text-transform: lowercase; padding: 0 3px;">for</span> <%= @vices[i].goal_name %></span>
             </div>
-            <div>
-              <strong>Total Goal Cost:</strong> $<%= @vices[i].goal_cost %>
-            </div>
-            <div>
-              <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn btn-toolbar navbar-btn' %>
-              <%= link_to "Delete", vice_path(:id => @vices[i].id, :vice_id => @vices[i].id), method: :delete, data: { confirm: "Did you really conquer your vice?" }, class: 'btn btn-toolbar navbar-btn' %>
-            </div>
-        <hr>
 
         <% if @vices[i].setbacks.length > 0 %>
           <div>
-            Days since last setback: <%= (((Time.now).to_i) - (@vices[i].setbacks.maximum(:setback_date)).to_i) / 1.day %>
+            <strong>Days since last setback:</strong> <span class="yellowBackground"> <%= (((Time.now).to_i) - (@vices[i].setbacks.maximum(:setback_date)).to_i) / 1.day %> </span> 
           </div>
-
-          <% (0...@vices[i].setbacks.length).each do |s| %>
+        <% end %>
             <div>
-             Setback date: <%= @vices[i].setbacks[s].setback_date.strftime("%B, %d %Y") %> |
-             Setback cost: $<%= @vices[i].setbacks[s].setback_cost %>
+              <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn btn-toolbar navbar-btn' %>
+              <%= link_to "Edit", edit_vice_path(@vices[i]), class: 'btn btn-toolbar navbar-btn' %>
+              <%= link_to "Delete", vice_path(:id => @vices[i].id, :vice_id => @vices[i].id), method: :delete, data: { confirm: "Did you really conquer your vice?" }, class: 'btn btn-toolbar navbar-btn' %>
             </div>
-          <% end %>
-          <% else %>
-            <div>
-              <em>No setbacks so far - that's fucking super.</em>
-            </div>
-            <%= link_to "Add Setback", newsetback_path(:vice_id => @vices[i].id), class: 'btn btn-toolbar navbar-btn' %>
-            <hr>
-          <% end %> 
 
+          <hr>
       <% end %> 
       <% end %>
     <% else %>
