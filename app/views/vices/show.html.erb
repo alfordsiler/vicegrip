@@ -14,6 +14,10 @@
     <% elsif @progress <= 90 %> 
       <div class="progress-bar progress-bar-warning progress-bar-striped active progressBar" role="progressbar" style="width: <%= @progress %>%"><span id="progressPercent"><%= @progress %>%</span>
       </div>
+        <% if @vice.setbacks.length > 0 %>
+          <div class="progress-bar progress-bar-info progress-bar-striped active progressBar" role="progressbar" style="width: <%= @couldp %>%"><span id="progressPercent"><%= @couldp %>%</span>
+          </div>
+        <% end %> 
     <% else %>
       <% if @progress >= 100 %>
         <% @progress = 100 %>
